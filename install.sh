@@ -13,4 +13,4 @@ sudo ttyd -o picocom -b 9600 /dev/ttyUSB0
 EOF
 
 cp picocom /usr/local/bin
-rm ../install
+rm -rv $(pwd)
