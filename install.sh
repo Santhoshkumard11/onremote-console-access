@@ -9,7 +9,7 @@ EOF
 touch ../run.sh
 cat > ../run.sh <<EOF
 #!/bin/bash
-sudo ttyd -o ./picocom -b 9600 /dev/ttyUSB0
+sudo ttyd -o picocom -b 9600 /dev/ttyUSB0
 EOF
 
 cp picocom /usr/local/bin
