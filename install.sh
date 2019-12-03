@@ -12,6 +12,7 @@ cd ttyd && mkdir build && cd build
 cmake ..
 sudo make && make install
 sudo cp ttyd /usr/local/bin/ttyd
+cd 
 
 touch run.sh
 cat > run.sh <<EOF
@@ -24,4 +25,3 @@ sudo chmod +x run.sh
 https://github.com/archetype2142/onremote-console-access/raw/master/picocom
 sudo mv picocom /usr/local/bin
 sudo rm -rv ttyd
-
