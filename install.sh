@@ -14,12 +14,6 @@ sudo make && make install
 sudo cp ttyd /usr/local/bin/ttyd
 cd ~/onremote-console-access/
 
-touch ../pyth.py
-cat > ../pyth.py <<EOF
-import subprocess 
-subprocess.call(['./run.sh'])
-EOF
-
 touch ../run.sh
 cat > ../run.sh <<EOF
 #!/bin/bash
