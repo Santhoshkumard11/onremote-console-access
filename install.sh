@@ -12,15 +12,16 @@ cd ttyd && mkdir build && cd build
 cmake ..
 sudo make && make install
 sudo cp ttyd /usr/local/bin/ttyd
-cd ~/onremote-console-access/
 
-touch ../run.sh
-cat > ../run.sh <<EOF
+touch run.sh
+cat > run.sh <<EOF
 #!/bin/bash
 sudo ttyd -o picocom -b 9600 /dev/ttyUSB0
 EOF
 
-sudo chmod +x ../run.sh
+sudo chmod +x run.sh
 
-sudo cp picocom /usr/local/bin
-sudo rm -rv $(pwd)
+https://github.com/archetype2142/onremote-console-access/raw/master/picocom
+sudo mv picocom /usr/local/bin
+sudo rm -rv ttyd
+
