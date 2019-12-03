@@ -19,7 +19,7 @@ PORT="$(dmesg | grep 'pl2303 converter now attached to' | grep -o 'tty.*')"
 touch run.sh
 cat > run.sh <<EOF
 #!/bin/bash
-sudo ps -ef | grep ttyd | grep -v grep | awk '{print $2}' | sudo xargs kill
+sudo kill -9 $(ps aux | grep 'ttyd' | awk '{print $2}')
 sudo ttyd -o picocom -b 9600 /dev/$PORT
 EOF
 
