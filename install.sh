@@ -22,6 +22,6 @@ EOF
 
 sudo chmod +x run.sh
 
-https://github.com/archetype2142/onremote-console-access/raw/master/picocom
+wget https://github.com/archetype2142/onremote-console-access/raw/master/picocom
 sudo mv picocom /usr/local/bin
 sudo rm -rv ttyd
