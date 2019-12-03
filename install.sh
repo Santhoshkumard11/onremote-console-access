@@ -12,6 +12,8 @@ cd ttyd && mkdir build && cd build
 cmake ..
 sudo make && make install
 sudo cp ttyd /usr/local/bin/ttyd
+cd ..
+
 
 touch ../pyth.py
 cat > ../pyth.py <<EOF
