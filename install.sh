@@ -26,7 +26,8 @@ sudo ttyd -o picocom -b 9600 /dev/$PORT
 EOF
 
 sudo chmod +x run_console
-sudo mv run_console /usr/local/bin
+cd
+sudo mv run_console /usr/local/bin/
 
 # wget https://github.com/archetype2142/onremote-console-access/raw/master/picocom
 # sudo chmod +x picocom 
