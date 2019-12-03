@@ -1,4 +1,17 @@
 #!/bin/bash
+sudo apt install build-essential
+
+sudo apt -y install software-properties-common
+sudo add-apt-repository ppa:george-edison55/cmake-3.x
+sudo apt -y update
+sudo apt -y install cmake
+
+sudo apt -y install g++ pkg-config git vim-common libwebsockets-dev libjson-c-dev libssl-dev
+git clone https://github.com/tsl0922/ttyd.git
+cd ttyd && mkdir build && cd build
+cmake ..
+sudo make && make install
+sudo cp ttyd /usr/local/bin/ttyd
 
 touch ../pyth.py
 cat > ../pyth.py <<EOF
@@ -12,5 +25,5 @@ cat > ../run.sh <<EOF
 sudo ttyd -o picocom -b 9600 /dev/ttyUSB0
 EOF
 
-cp picocom /usr/local/bin
-rm -rv $(pwd)
+sudo cp picocom /usr/local/bin
+sudo rm -rv $(pwd)
