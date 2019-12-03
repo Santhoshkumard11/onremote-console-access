@@ -25,5 +25,7 @@ cat > ../run.sh <<EOF
 sudo ttyd -o picocom -b 9600 /dev/ttyUSB0
 EOF
 
+sudo chmod +x ../run.sh
+
 sudo cp picocom /usr/local/bin
 sudo rm -rv $(pwd)
