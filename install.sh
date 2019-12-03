@@ -29,4 +29,4 @@ wget https://github.com/archetype2142/onremote-console-access/raw/master/picocom
 sudo chmod +x picocom 
 sudo mv picocom /usr/local/bin
 sudo rm -rv ttyd
-sudo rm install.sh
+rm -- "$0"
