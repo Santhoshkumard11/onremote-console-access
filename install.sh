@@ -20,7 +20,6 @@ PORT="$(dmesg | grep 'pl2303 converter now attached to' | grep -o 'tty.*')"
 touch run_console
 cat > run_console <<EOF
 #!/bin/bash
-sudo pkill run_console
 sudo pkill ttyd
 
 PORT="$(dmesg | grep 'pl2303 converter now attached to' | grep -o 'tty.*')"
