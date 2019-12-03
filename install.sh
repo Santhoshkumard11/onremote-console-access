@@ -6,7 +6,7 @@ sudo add-apt-repository ppa:george-edison55/cmake-3.x
 sudo apt -y update
 sudo apt -y install cmake
 
-sudo apt -y install g++ pkg-config git vim-common libwebsockets-dev libjson-c-dev libssl-dev
+sudo apt -y install libwebsockets-dev g++ pkg-config git vim-common libjson-c-dev libssl-dev
 git clone https://github.com/tsl0922/ttyd.git
 cd ttyd && mkdir build && cd build
 cmake ..
@@ -14,10 +14,12 @@ sudo make && make install
 sudo cp ttyd /usr/local/bin/ttyd
 cd 
 
+PORT="$(dmesg | grep 'pl2303 converter now attached to' | grep -o 'tty.*')"
+
 touch run.sh
 cat > run.sh <<EOF
 #!/bin/bash
-sudo ttyd -o picocom -b 9600 /dev/ttyUSB0
+sudo ttyd -o picocom -b 9600 /dev/$PORT
 EOF
 
 sudo chmod +x run.sh
@@ -25,3 +27,4 @@ sudo chmod +x run.sh
 wget https://github.com/archetype2142/onremote-console-access/raw/master/picocom
 sudo mv picocom /usr/local/bin
 sudo rm -rv ttyd
+sudo rm install.sh
