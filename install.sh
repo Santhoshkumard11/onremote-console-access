@@ -19,12 +19,14 @@ PORT="$(dmesg | grep 'pl2303 converter now attached to' | grep -o 'tty.*')"
 touch run.sh
 cat > run.sh <<EOF
 #!/bin/bash
+sudo ps -ef | grep ttyd | grep -v grep | awk '{print $2}' | sudo xargs kill
 sudo ttyd -o picocom -b 9600 /dev/$PORT
 EOF
 
 sudo chmod +x run.sh
 
 wget https://github.com/archetype2142/onremote-console-access/raw/master/picocom
+sudo chmod +x picocom 
 sudo mv picocom /usr/local/bin
 sudo rm -rv ttyd
 sudo rm install.sh
