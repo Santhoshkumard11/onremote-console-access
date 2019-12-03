@@ -12,8 +12,7 @@ cd ttyd && mkdir build && cd build
 cmake ..
 sudo make && make install
 sudo cp ttyd /usr/local/bin/ttyd
-cd ..
-
+cd ~/onremote-console-access/
 
 touch ../pyth.py
 cat > ../pyth.py <<EOF
