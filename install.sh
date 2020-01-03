@@ -6,6 +6,7 @@ sudo add-apt-repository ppa:george-edison55/cmake-3.x
 sudo apt -y update
 sudo apt -y install cmake
 sudo apt-get install netdiscover
+sudo apt -y install daemon
 
 sudo apt -y install libwebsockets-dev g++ pkg-config git vim-common libjson-c-dev libssl-dev
 git clone https://github.com/tsl0922/ttyd.git
