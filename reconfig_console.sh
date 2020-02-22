@@ -3,7 +3,7 @@ cat > run_console <<EOF
 #!/bin/bash
 sudo pkill ttyd
 
-sudo ttyd picocom -b 9600 /dev/$(dmesg | grep 'pl2303 converter now attached to' | grep -o 'tty.*')
+sudo ttyd -c $1:$2 picocom2 -b 9600 /dev/$(dmesg | grep 'pl2303 converter now attached to' | grep -o 'tty.*')
 EOF
 sudo chmod +x run_console
 cd
