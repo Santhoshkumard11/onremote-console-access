@@ -17,5 +17,6 @@ openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=IN/ST=UP/L=Noid
 openssl x509 -sha256 -req -extfile <(printf "subjectAltName=DNS:$(exec hostname -I | awk '{print $2}' )") -days 365 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
 
 sudo mv * /usr/local/bin/
+cd
 rm -rv temp_ssl/
 rm reconfig_console.sh
