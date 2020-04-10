@@ -1,3 +1,5 @@
+mkdir temp_ssl
+cd temp_ssl
 touch run_console
 cat > run_console <<EOF
 #!/bin/bash
@@ -6,7 +8,14 @@ sudo pkill ttyd
 sudo ttyd -c --ssl --ssl-cert server.crt --ssl-key server.key --ssl-ca ca.crt picocom2 -b 9600 /dev/$(dmesg | grep 'pl2303 converter now attached to' | grep -o 'tty.*')
 EOF
 sudo chmod +x run_console
-cd
-sudo mv run_console /usr/local/bin/
+
+openssl genrsa -out ca.key 2048
+openssl req -new -x509 -days 365 -key ca.key -subj "/C=IN/ST=UP/L=Noida/O=nexzstep/CN=nexzstep CA" -out ca.crt
+
+# server certificate (for multiple domains, change subjectAltName to: DNS:example.com,DNS:www.example.com)
+openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=IN/ST=UP/L=Noida/O=nexzstep/CN=$1" -out server.csr
+openssl x509 -sha256 -req -extfile <(printf "subjectAltName=DNS:$1") -days 365 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
+
+sudo mv * /usr/local/bin/
 
 rm -- "$0"
