@@ -14,7 +14,7 @@ openssl req -new -x509 -days 365 -key ca.key -subj "/C=IN/ST=UP/L=Noida/O=nexzst
 
 # server certificate (for multiple domains, change subjectAltName to: DNS:example.com,DNS:www.example.com)
 openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=IN/ST=UP/L=Noida/O=nexzstep/CN=$1" -out server.csr
-openssl x509 -sha256 -req -extfile <(printf "subjectAltName=DNS:$1") -days 365 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
+openssl x509 -sha256 -req -extfile <(printf "subjectAltName=DNS:$(exec hostname -I | awk '{print $2}' )") -days 365 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
 
 sudo mv * /usr/local/bin/
 
