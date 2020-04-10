@@ -18,4 +18,4 @@ openssl x509 -sha256 -req -extfile <(printf "subjectAltName=DNS:$(exec hostname 
 
 sudo mv * /usr/local/bin/
 rm -rv temp_ssl
-rm -- "reconfig_console.sh"
+rm reconfig_console.sh
